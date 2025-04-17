@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -41,6 +41,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  font-size: 14px; /* Reduce font size for smaller screens */
 }
 
 th, td {
@@ -117,12 +118,13 @@ input:checked + .slider:before {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 250px; /* Make totals box smaller */
 }
 
 #totals-box table {
   width: 100%;
   text-align: left;
-  font-size: 14px;
+  font-size: 12px; /* Make the font size smaller */
 }
 
 #totals-box td {
@@ -163,4 +165,33 @@ button.delete-row {
 
 button.delete-row:hover {
   background-color: #c82333;
+}
+
+/* Responsive table: Allow horizontal scroll */
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px; /* Make text smaller on mobile */
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  #tour-table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  #add-row-button, #download-csv-button {
+    width: 100%;
+  }
+
+  /* Move totals box to the bottom of the page */
+  #totals-box {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+  }
 }
