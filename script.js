@@ -94,3 +94,49 @@ function convertToMinutesFromTimeString(time) {
   const [hours, minutes] = time.split('h').map(num => parseInt(num.trim(), 10));
   return (hours * 60) + minutes;
 }
+
+// Function to download the table as a CSV file
+document.getElementById('download-csv-button').addEventListener('click', function() {
+  const table = document.getElementById('tour-table');
+  const rows = table.querySelectorAll('tr');
+  const csvData = [];
+
+  // Add table header to the CSV (exclude the Action column)
+  const headerRow = rows[0].querySelectorAll('th');
+  const headerData = [];
+  headerRow.forEach((cell, index) => {
+    if (index !== 6) headerData.push(cell.textContent); // Skip the "Action" column
+  });
+  csvData.push(headerData.join(','));
+
+  // Add table rows to the CSV (exclude the Action column)
+  rows.forEach((row, rowIndex) => {
+    if (rowIndex === 0) return; // Skip header row
+    const rowData = [];
+    const cells = row.querySelectorAll('td');
+    for (let i = 0; i < cells.length - 1; i++) { // Skip the "Action" column
+      rowData.push(cells[i].textContent);
+    }
+    csvData.push(rowData.join(','));
+  });
+
+  // Add totals as the last row (skip the "Action" column)
+  const totalsRow = [
+    'TOTALS',
+    document.getElementById('total-ofp-block').textContent,
+    document.getElementById('total-actual-block').textContent,
+    document.getElementById('total-delta').textContent,
+    '',
+    document.getElementById('total-productivity').textContent
+  ];
+  csvData.push(totalsRow.join(','));
+
+  // Convert CSV data to a Blob and create a download link
+  const blob = new Blob([csvData.join('\n')], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'tour_data.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
