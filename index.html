@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Data Entry</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tour Data Entry</h1>
+
+    <form id="tour-form">
+      <label for="sector">Sector:</label>
+      <input type="text" id="sector" name="sector" required>
+
+      <div class="block-time">
+        <label for="ofp-block">OFP Block Time:</label>
+        <div class="time-input">
+          <input type="number" id="ofp-block-hours" name="ofp-block-hours" min="0" required>
+          <span>h</span>
+          <input type="number" id="ofp-block-minutes" name="ofp-block-minutes" min="0" max="59" required>
+          <span>min</span>
+        </div>
+      </div>
+
+      <div class="block-time">
+        <label for="actual-block">Actual Block Time:</label>
+        <div class="time-input">
+          <input type="number" id="actual-block-hours" name="actual-block-hours" min="0" required>
+          <span>h</span>
+          <input type="number" id="actual-block-minutes" name="actual-block-minutes" min="0" max="59" required>
+          <span>min</span>
+        </div>
+      </div>
+
+      <label for="corrected">Corrected:</label>
+      <label class="switch">
+        <input type="checkbox" id="corrected" name="corrected">
+        <span class="slider"></span>
+      </label>
+    </form>
+
+    <button type="submit" id="add-row-button">Add Row</button>
+
+    <table id="tour-table">
+      <thead>
+        <tr>
+          <th>Sector</th>
+          <th>OFP Block</th>
+          <th>Actual Block</th>
+          <th>Delta</th>
+          <th>Corrected</th>
+          <th>Productivity Discrepancy</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Floating Totals Box -->
+  <div id="totals-box">
+    <table>
+      <tr>
+        <td>Total OFP Block:</td>
+        <td id="total-ofp-block">0h 0m</td>
+      </tr>
+      <tr>
+        <td>Total Actual Block:</td>
+        <td id="total-actual-block">0h 0m</td>
+      </tr>
+      <tr>
+        <td>Total Delta:</td>
+        <td id="total-delta">0h 0m</td>
+      </tr>
+      <tr>
+        <td>Total Productivity Discrepancy:</td>
+        <td id="total-productivity">0h 0m</td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
