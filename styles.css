@@ -1,3 +1,18 @@
+/* Make sure the font-size for inputs is at least 16px */
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 16px; /* Prevent iOS zoom */
+}
+
+/* Ensure number inputs use numeric keyboard on mobile */
+input[type="number"] {
+  -webkit-appearance: none; /* Remove browser styling */
+  -moz-appearance: textfield;
+}
+
+/* Other styles remain unchanged */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -15,12 +30,6 @@ h1 {
 label {
   display: block;
   margin: 5px 0;
-}
-
-input, select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
 }
 
 button {
@@ -190,6 +199,7 @@ button.delete-row:hover {
   #totals-box {
     position: relative;
     bottom: 0;
+    right: 0;
     width: 100%;
     padding: 20px;
     margin-top: 20px;

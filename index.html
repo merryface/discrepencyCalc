@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tour Data Entry</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,9 +17,9 @@
       <div class="block-time">
         <label for="ofp-block">OFP Block Time:</label>
         <div class="time-input">
-          <input type="number" id="ofp-block-hours" name="ofp-block-hours" min="0" required>
+          <input type="number" id="ofp-block-hours" name="ofp-block-hours" min="0" required inputmode="numeric">
           <span>h</span>
-          <input type="number" id="ofp-block-minutes" name="ofp-block-minutes" min="0" max="59" required>
+          <input type="number" id="ofp-block-minutes" name="ofp-block-minutes" min="0" max="59" required inputmode="numeric">
           <span>min</span>
         </div>
       </div>
@@ -27,9 +27,9 @@
       <div class="block-time">
         <label for="actual-block">Actual Block Time:</label>
         <div class="time-input">
-          <input type="number" id="actual-block-hours" name="actual-block-hours" min="0" required>
+          <input type="number" id="actual-block-hours" name="actual-block-hours" min="0" required inputmode="numeric">
           <span>h</span>
-          <input type="number" id="actual-block-minutes" name="actual-block-minutes" min="0" max="59" required>
+          <input type="number" id="actual-block-minutes" name="actual-block-minutes" min="0" max="59" required inputmode="numeric">
           <span>min</span>
         </div>
       </div>
@@ -42,7 +42,6 @@
     </form>
 
     <button type="submit" id="add-row-button">Add Row</button>
-
     <table id="tour-table">
       <thead>
         <tr>
